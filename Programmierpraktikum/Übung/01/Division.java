@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
-
-
 class Division {
-
-
 
     public static void main(String[] args) {
 
@@ -79,6 +75,8 @@ class Division {
       
         System.out.println("Division:"+division);
         System.out.println("Rest:"+rest);
+        System.out.println("Division Vergleich:"+( Math.abs(division)==(a/bf)));
+        System.out.println("Rest Vergleich:"+( Math.abs(rest)==(a%bf)));
         
         scn.close();
     }
