@@ -6,13 +6,12 @@ class Zeichenkette {
 
         String satz;
         String satz1;
-        int length;
         int i = 0;
         int a = 1;
         String ergebniss = "";
 
-        ArrayList Vokale = new ArrayList();
-        ArrayList Satz = new ArrayList();
+        ArrayList<String> Vokale = new ArrayList<>();
+        ArrayList<String> Satz = new ArrayList<>();
         Scanner scn = new Scanner(System.in);
 
         Vokale.add("a");
@@ -74,5 +73,4 @@ class Zeichenkette {
         }
         scn.close();
     }
-
 }
