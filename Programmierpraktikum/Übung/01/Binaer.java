@@ -10,11 +10,11 @@ public class Binaer {
         double num=0;
         double ergebniss=0;
         double dezimal = 0;
-        boolean yn = true;
+        boolean yn = true;0
 
         //Scanner und arrays werden definiert
         Scanner scn = new Scanner(System.in);
-        ArrayList ez = new ArrayList();
+        ArrayList<Double> ez = new ArrayList<>();
         ez.add(1.0);ez.add(0.0);
         
         
