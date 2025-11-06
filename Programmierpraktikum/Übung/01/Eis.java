@@ -1,6 +1,5 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.util.LinkedList;
 class Eis {
     public static void main(String[] args) {
     	
@@ -11,26 +10,25 @@ class Eis {
         int Insgesamt = 0;
         
         //Listen mit Information zu Vorhandenen Eissorten werden definiert arr eissorten arr1 kugel preis
-        ArrayList arr = new ArrayList();
-        LinkedList arr1 = new LinkedList();
-        
+        HashMap<String, Integer> sorten = new HashMap<>();
         Scanner scn = new Scanner(System.in);
         
         //Vorhandene Elemente werden geordnet der liste hinzugefügt bedeutet index 0 arr ist die eissorte und arr1 der preis in €  
-        arr.add("SCHOKO"); arr.add("ERDBEER"); arr.add("ZITRONE");
-        arr1.add(1); arr1.add(2); arr1.add(3);
+        sorten.put("SCHOKO", 1);
+        sorten.put("ERDBEER", 2);
+        sorten.put("ZITRONE", 3);
         
         
         while (yn.toUpperCase().equals("JA")){
             
-            System.out.println("Welches eis möchtest du? [Erdbeer, Schocko, Zitrone]");
+            System.out.println("Welches eis möchtest du?"+sorten.keySet());
             sorte = scn.next();
             
-            if (arr.contains(sorte.toUpperCase())){
+            if (sorten.containsKey(sorte.toUpperCase())){
             
                 System.out.println("Wieviele kugeln möchtest du?");
                 kugeln = scn.nextInt();
-                int preis = kugeln * (int) arr1.get(arr.indexOf(sorte.toUpperCase()));
+                int preis = kugeln * (int) sorten.get(sorte.toUpperCase());
                 Insgesamt = Insgesamt + preis;
                 System.out.println("Möchtest du noch mehr? [ja/fertig]");
                 yn = scn.next();
@@ -43,7 +41,7 @@ class Eis {
             }
         
             else{
-                System.out.println("Wir haben leider kein " + sorte +" Wir haben aber " + arr.get(0) + ", " + arr.get(1)+" oder "+ arr.get(2));
+                System.out.println("Wir haben leider kein " + sorte +" Wir haben aber " + sorten.keySet() );
             }
         }
         scn.close();
