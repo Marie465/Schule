@@ -1,26 +1,33 @@
+/**
+ * @author Marie Papsdorf
+ * 
+ * Programm welches den benutzer nach eissorte und anzahl an kugeln fragt
+ * und den endpreis berechnet und ausgibt
+ */
+
 import java.util.HashMap;
 import java.util.Scanner;
 class Eis {
     public static void main(String[] args) {
-    	
-       // Initialiesierung benötigter Variablen
+    
         String sorte = "";
         int kugeln;
         String yn = "ja";
         int Insgesamt = 0;
         
-        //Listen mit Information zu Vorhandenen Eissorten werden definiert arr eissorten arr1 kugel preis
         HashMap<String, Integer> sorten = new HashMap<>();
         Scanner scn = new Scanner(System.in);
         
-        //Vorhandene Elemente werden geordnet der liste hinzugefügt bedeutet index 0 arr ist die eissorte und arr1 der preis in €  
         sorten.put("SCHOKO", 1);
         sorten.put("ERDBEER", 2);
         sorten.put("ZITRONE", 3);
         
         
         while (yn.toUpperCase().equals("JA")){
-            
+        /**
+         * @param
+         * die eissorte wird abgefragt und und mit möglichen abgeglichen    
+         */
             System.out.println("Welches eis möchtest du?"+sorten.keySet());
             sorte = scn.next();
             
@@ -31,15 +38,17 @@ class Eis {
                 int preis = kugeln * (int) sorten.get(sorte.toUpperCase());
                 Insgesamt = Insgesamt + preis;
                 System.out.println("Möchtest du noch mehr? [ja/fertig]");
-                yn = scn.next();
-            
+                yn = scn.next();       
+                
                 if(yn.toUpperCase().equals("FERTIG")){
                     System.out.println("Das wären Dann " + Insgesamt + "€");
                     break;
                     } 
-            
             }
-        
+            /**
+             * @return wenn eissorte nicht bekannt ist werden vorhandene sorten angegeben
+             */
+
             else{
                 System.out.println("Wir haben leider kein " + sorte +" Wir haben aber " + sorten.keySet() );
             }
