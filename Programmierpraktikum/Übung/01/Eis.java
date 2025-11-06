@@ -1,8 +1,10 @@
 /**
- * @author Marie Papsdorf
- * 
  * Programm welches den benutzer nach eissorte und anzahl an kugeln fragt
  * und den endpreis berechnet und ausgibt
+ *
+ * @author Marie Papsdorf
+ * @version 1.0
+ * @since 2025-11-06
  */
 
 import java.util.HashMap;
