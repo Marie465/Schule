@@ -10,7 +10,7 @@ public class Binaer {
         double num=0;
         double ergebniss=0;
         double dezimal = 0;
-        boolean yn = true;0
+        boolean yn = true;
 
         //Scanner und arrays werden definiert
         Scanner scn = new Scanner(System.in);
