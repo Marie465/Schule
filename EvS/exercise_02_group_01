@@ -1,0 +1,317 @@
+% ==================================================================================
+% ==================================================================================
+%
+%                          DOCUMENT HEADER
+%
+% ==================================================================================
+% ==================================================================================
+%
+% ==================================================================================
+% Globale Variablen, die schon im Header benötigt werden
+% ==================================================================================
+%
+% Semester der Veranstaltung
+\newcommand{\currSem}{Wintersemester 2015}
+% Namen der Authoren und Einrichtung
+\newcommand{\topic}{Übung nr.2}
+\newcommand{\authors}{Gruppe 01}
+\newcommand{\institute}{BTU Cottbus - Senftenberg}
+% Veranstaltung
+\newcommand{\project}{Entwicklung von Software-Systemen}
+% Assemblerdateien auf dem BS Webserver
+\newcommand{\pdf}[1]{\textbf{\href{http://www-sst.informatik.tu-cottbus.de/Uebungsmaterial/EntwicklungvonSoftware-Systemen/#1.pdf}{#1}}}
+%
+% ==================================================================================
+% KLASSEN UND PAKET DEKLARATION
+% ==================================================================================
+%
+% ----------------------------------------------------------------------------------
+% Basis Konfiguration des Dokumentes
+\documentclass[fontsize=10pt, a4paper, DIV=13, german, parskip]{scrartcl}
+%
+% ----------------------------------------------------------------------------------
+%	Neue Deutsche Rechtschreibung laden
+\usepackage[ngerman]{babel} 		% German language with new orthography
+% \usepackage[english, UKenglish]{babel} % Englisch
+%	fuer die Nutzung von Umlauten... " vor a oder o oder u eingeben
+%
+\usepackage[utf8]{inputenc}			% UTF-8 Support
+\usepackage[T1]{fontenc}			% T1 Fonts fÃ¼r die Schrift Enkodierung
+%
+\usepackage[babel,german=quotes]{csquotes}
+%
+\usepackage{lastpage}
+\usepackage{mathptmx}
+\usepackage{eurosym}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+%
+\usepackage[T1]{url}    % Web-Adressen auch mit T1-Encoding
+\urlstyle{tt}           % und in tt-Font
+%
+%
+% spezielle PDF-Unterstützung(Hyperlinks, Bookmarks) für die PDF-Datei Erstellung
+\usepackage[                                            %
+    pdftitle={\topic},                                  %
+    pdfsubject={\project},                              %
+    pdfauthor={\authors},                               %
+    colorlinks,                                         %
+    urlcolor=blue,                                      %
+    citecolor=red,                                      %
+    linkcolor=blue,                                     %
+    breaklinks=true,                                    %
+    pdfpagemode=UseOutlines,                            %
+    plainpages=false,                                   %
+    pdfpagelabels,                                      %
+    bookmarksnumbered,                                  %
+    bookmarksopen,                                      %
+    pdfstartview=FitV,                                  %
+    pdfpagelayout=SinglePage                            %
+]{hyperref}
+%
+\usepackage{graphicx}   % Graphikpaket, Einbinden von Bildern
+\usepackage{tabularx}   % automatische Spaltenbreite
+\usepackage{colortbl}
+\usepackage{supertabular}
+\usepackage{longtable}  % Tabellen, die über mehr als eine Seite gehen
+\usepackage{booktabs}   % toprule, midrule in Tabellen
+\usepackage{comment}	% Unterstützung für verschiedene Versionen
+\usepackage{moreverb}	% Unterstützung von nummerierten Listungs
+\usepackage{listings}	% erweiterte Unterstützung für Quellcode Einbindung
+\usepackage{float}      % Option H für Figure Umgebung, Platzierung genau an der Stelle
+\usepackage{enumerate}	% mehr Optionen für Enumerate Umgebungen
+\usepackage{enumitem}   % Stil von Aufzählungen anpassbar machen
+\usepackage{longtable}	% Table to be used when spreading a tabular over multiple pages
+\usepackage{caption}
+\usepackage{eurosym} 	% euro symbol
+\usepackage{lastpage}	% Anzeige der letzten Seitenzahl
+\usepackage{scrlayer-scrpage}% Umdefinieren von Headern und Footern für KOMA Skript
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Pakete der tikz-Library (snakes ist veraltet, decorations ist neu)
+\usepackage{tikz} % drawing support
+\usetikzlibrary{positioning} % load positioning library
+\usetikzlibrary{decorations.pathmorphing} % used for sneaking lines
+\usetikzlibrary{backgrounds} % changing backgrounds
+\usetikzlibrary{arrows} % load positioning library
+\usetikzlibrary{fit} % compute object sizes
+\usetikzlibrary{petri} % petri net library !?
+\usetikzlibrary{calc} % calculate positions and so on!?
+\usepackage{tikz-uml}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% -----------------------------------------------------------------------------
+% listing settings
+% -----------------------------------------------------------------------------
+% Standard-Sprache und deren Optionen setzen
+\usepackage{listings}           % include listings
+%
+\lstset{%
+    language=Java,              % Sprachentyp definieren
+    numbers=left,               % Zeilennummern links
+    stepnumber=1,               % Jede Zeile nummerieren.
+    keywordstyle=\color{violet}\textbf,
+        % numbersep=5pt,                % Abstand der Nummern zum Quellcode
+        numberstyle=\footnotesize,               % Zeichengr<F6>sse f<FC>r die Nummern.
+        breaklines=true,                % Zeilen umbrechen wenn notwendig.
+        breakautoindent=true,           % Nach dem Zeilenumbruch Zeile einr<FC>cken.
+        postbreak=\space,               % Bei Leerzeichen umbrechen.
+        tabsize=3,                      % Tabulatorgroesse
+        numbersep=20pt,
+    basicstyle=\small\fontfamily{cmtt},     % Nichtproportionale Schrift, klein f<FC>r den Quellcode
+        showspaces=false,               % Leerzeichen nicht anzeigen.
+        showstringspaces=false,         % Leerzeichen auch in Strings ('') nicht anzeigen.
+        extendedchars=true,             % Alle Zeichen vom Latin1 Zeichensatz anzeigen.
+    emphstyle = \underbar,
+    captionpos = t,
+    xleftmargin=0pt,
+    xrightmargin=-120pt,
+    framexleftmargin=7pt,
+    framexrightmargin=7pt,
+    framextopmargin=5pt,
+    framexbottommargin=5pt,
+    frame=rtlb %
+}
+\lstloadlanguages{% Check Dokumentation for further languages ...
+         %[Visual]Basic
+         %Pascal
+         %C
+         %C++
+         %XML
+         %HTML
+         %Java
+}
+%
+%
+% ==================================================================================
+% UMGEBUNG
+% ==================================================================================
+%
+% Text-Formatierungen als neue, einfachere Kommandos
+\newcommand{\kommentar}[1]{\noindent\fbox{\fbox{\parbox{\textwidth}{#1}}}}
+\newcommand{\ausblenden}[1]{}
+% \newcommand{\omnet}{\textsc{OMNeT++}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\costubs}{{CoStuBS} }
+%
+% Neuberechnung der Text Area
+\typearea[current]{last}
+%
+\renewcommand{\baselinestretch}{1.1}
+%
+\pagestyle{scrheadings}								% Definition des Pagelayouts
+\ihead[]{\includegraphics[scale=.75]{BTULogoKompakt}}
+\chead{\today}
+\ohead[]{\authors\\\project}
+\cfoot{Seite \thepage\ von \pageref{LastPage}}		% Seite 1 von X im Footer
+%
+% ----------------------------------------------------------------------------------
+% Unterstützung für die Anzeige von Lösungen zu den einzelnen Aufgaben
+%
+\newenvironment{smallitemize}   % Umgebung mit winzigen vertikalen Abstaenden
+{
+    \begin{list}{$\bullet$ \ }{}
+        \setlength{\topsep}{0pt}
+        \setlength{\parskip}{0pt}
+        \setlength{\partopsep}{0pt}
+        \setlength{\parsep}{0pt}
+        %\setlength{\itemsep}{0pt}
+}
+{
+    \end{list}
+}
+
+\setlength{\parskip}{2pt}
+\setlength{\partopsep}{1pt}
+\setlength{\parsep}{1pt}
+
+\usepackage[tmargin=80pt, lmargin=80pt, tmargin=95pt, headsep=3.5em]{geometry}
+% ==================================================================================
+% define standard title page layout
+% ==================================================================================
+\newcommand{\intro}{
+\pdfbookmark[1]{\topic}{titleanc}
+%
+% ----------------------------------------------------------------------------------
+% Header
+% ----------------------------------------------------------------------------------
+%
+%
+
+\begin{figure}[!h]
+	\vspace{-1.1cm}\hspace*{.15cm}
+	%\includegraphics[scale=.65]{../BTULogoKompakt}
+\end{figure}
+%
+\vspace{-4em}
+%
+\begin{center}
+    \rule{.925\textwidth}{0.25pt}\\[0.35cm]
+    \textbf{\Large{\topic}}\\
+    \rule{.925\textwidth}{0.25pt}\\[0.6cm]
+\end{center}
+}
+\begin{document}
+\section{Aufgabe - Prozessmodelle}
+\begin{enumerate}[label=\Alph*]
+    \item Drei Studierende gründen ein Start-up und wollen in sechs Monaten einen Prototypen entwickeln.
+Ich würde hier ein \textbf{agiles Prozessmodell}, zum Beispiel \textbf{Scrum}, empfehlen.
+In einem Start-up ändert sich während der Entwicklung oft noch vieles – zum Beispiel Ideen, Design oder Funktionen. Man weiß am Anfang meistens noch gar nicht genau, wie die App am Ende aussehen soll. Mit einem agilen Vorgehen kann das Team in kurzen Schritten (Sprints) arbeiten, regelmäßig etwas testen und schnell auf neue Ideen reagieren. So entsteht nach und nach ein funktionierender Prototyp, den man am Ende auf der Messe zeigen kann.
+\item Eine Firma nutzt bereits das \textbf{V-Modell} und möchte nur eine angepasste Version ihrer bestehenden Software für einen neuen Markt entwickeln.
+Hier würde ich auch wieder das \textbf{V-Modell} empfehlen, eventuell leicht kombiniert mit \textbf{iterativen Schritten}.
+Die Firma kennt das Modell schon und hat damit Erfahrung. Da die Anforderungen und Abläufe weitgehend feststehen, ist ein planorientiertes Vorgehen mit klaren Tests und Dokumentation am sinnvollsten. Iterative Schritte kann man trotzdem einbauen, um kleinere Änderungen schneller zu prüfen, ohne das ganze Modell zu ändern.
+\end{enumerate}
+\section{Aufgabe - Entwicklungsumgebung}
+Nennen Sie für jede Softwareentwicklungsaktivität (Analyse und Definition – Design – Implementierung – Integration und Testen – Installation – Betrieb und Wartung) ein Werkzeug in der IDE Eclipse und begründen Sie kurz.\\
+\\
+\begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  Aktivität & Eclipse-Werkzeug  & Begründung\\
+   \hline
+    Analyse und Definition & Papyrus (UML-Modellierung) &Unterstützt die Erstellung von Anforderungs- und Anwendungsfalldiagrammen zur Analyse der Systemanforderungen.\\
+     \hline
+    Design  & Eclipse Modeling Framework (EMF) oder Sirius &Dient zum Entwurf von Klassen-, Architektur- und Datenmodellen, die später direkt in Code umgesetzt werden können.\\
+     \hline
+    Implementierung & Java Development Tools (JDT)&Bietet Editor, Debugger, Compiler und Refactoring-Funktionen für die eigentliche Programmierung.\\
+    \hline
+    Integration und Testen & JUnit (Testframework) &Ermöglicht das Erstellen und Ausführen automatisierter Tests sowie die Auswertung der Ergebnisse direkt in Eclipse.\\
+     \hline
+    Installation & Eclipse p2 / Tycho &Unterstützt die Erstellung, Paketierung und Bereitstellung von Software-Plug-ins oder Anwendungen.\\
+    \hline
+    Betrieb \& Wartung & EGit (Versionsverwaltung) oder Eclipse Runtime Environment &Hilft beim Verwalten von Softwareversionen und beim Bereitstellen lauffähiger Anwendungen.\\
+  \hline
+\end{tabularx}
+
+\section{Aufgabe - Zusammenfassung}
+Beantworten Sie mit Ihren eigenen Worten kurz (max. zwei Sätze pro Frage) die folgenden Fragen:\\
+\begin{enumerate}
+    \item \textbf{Was ist Informatik?}\\
+    Informatik ist eine Wissenschaft die von der systematischen Verarbeitung, Speicherung und Übertragung von Informationen durch formalen Methoden und Rechner bestimmt wird. Sie verbindet Theorie, also Algorithmen und Modelle mit praktischer Anwendung, also Software \& Systeme.\\
+    \item \textbf{Was ist Softwaretechnik?}\\
+Softwaretechnik ist der Ansatz zur Planung, Entwicklung, Prüfung und Wartung von Softwaren, um qualitätsvolle und zuverlässige Systeme zu erzeugen. Sie nutzt Methoden, Prozesse und Werkzeuge, um komplexe Projekte kontrollierbar zu machen.\\
+    \item \textbf{Wie können wir den Softwareentwicklungsprozess organisieren?}\\
+Man kann den Prozess durch ein geeignetes Entwicklungsmodell (z. B. Wasserfall, V-Modell, Agile/Scrum) strukturieren und in verschiedene Phasen aufteilen. Zusätzlich helfen Tasks, und regelmäßige Tests, Arbeit zu koordinieren und Qualität sicherzustellen.\\
+    \item \textbf{Welche Werkzeuge können uns bei der Softwareentwicklung unterstützen?}\\
+Typische Werkzeuge sind IDEs (z. B. Eclipse), Versionsverwaltung (Git/EGit), Testframeworks (JUnit), und Issue-Tracker. Sie automatisieren Routineaufgaben, verbessern Zusammenarbeit und erhöhen Wiederholbarkeit sowie Zuverlässigkeit.
+    
+\end{enumerate}
+\section{Aufgabe - Programmierstile}
+Kotlin ist eine objektorientierte Programmiersprache. Sie basiert auf der Sprache Java und unterstützt demnach bekannte Konzepte wie Klassen, Objekte und Methoden\\
+\\
+Beispielprogramm: Vorstellung einer Person mit Name und Alter
+\\
+\begin{lstlisting}
+class Person(val name:String,val age:Int) {
+   fun introduce() {
+       println("Hi. Mein name ist $name und ich bin $age Jahre alt")
+   }
+}
+fun main(){
+   val person1=Person("Clara",19)
+  person1.introduce()
+}
+\end{lstlisting}
+Clojure ist eine funktionale Programmiersprache. Hier stehen Funktionen im Mittelpunkt und die Daten sind unveränderlich, d.h. die Eingabewerte werden nicht verändert, sondern es entsteht lediglich ein neuer Wert.\\
+ \\
+Beispielprogramm: Berechnung des Alters einer Person\\
+\\
+\begin{lstlisting}
+    (def my-name "Clara")
+(def age 19)
+
+(defn introduce [my-name age]
+(println (str "Hallo. Ich heisse "my-name" und ich bin "age" Jahre alt.")))
+
+(defn future-age [age]
+(+ age 10))
+
+(introduce my-name age)
+(println (str "In zehn Jahren bin ich "(future-age age)" Jahre alt."))
+\end{lstlisting}
+\section{Aufgabe - Programmierstile}
+\textbf{Corrode:}\\
+
+Die funktionale Programmiersprache Haskell ist für diese Aufgabe gut geeignet, weil die Daten transformiert werden können, ohne die Originaldaten zu ändern, denn Funktionen geben nur Werte zurück, ohne den Zustand anderer Variablen zu beeinflussen. Dadurch wird das Umwandeln von Code einfacher.\\
+\\
+
+\textbf{pySimpleGUI:}\\
+
+Python ist für diese Aufgabe gut geeignet, weil Skriptsprachen das schnelle Entwickeln, Testen sowie Anpassen von grafischen Oberflächen ermöglichen. 
+\section{Aufgabe -  Grammatik}
+\begin{enumerate}[label=\alph*]
+    \item \begin{enumerate}
+    \item
+    \end{enumerate}
+    \item 
+\end{enumerate}
+
+\section{Aufgabe - Korrektheit}
+
+\section{Aufgabe - Korrektheit}
+\end{document}
