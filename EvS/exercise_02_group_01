@@ -305,10 +305,20 @@ Die funktionale Programmiersprache Haskell ist für diese Aufgabe gut geeignet, 
 Python ist für diese Aufgabe gut geeignet, weil Skriptsprachen das schnelle Entwickeln, Testen sowie Anpassen von grafischen Oberflächen ermöglichen. 
 \section{Aufgabe -  Grammatik}
 \begin{enumerate}[label=\alph*]
-    \item \begin{enumerate}
     \item
-    \end{enumerate}
+        \begin{enumerate}
+            \item \textbf{abc} ist ein möglicher bezeichner der dem format Buchstabe { Buchstabe } { Ziffer } folgt
+            \item \textbf{ab'c} ist kein möglicher bezeichner den im syntax Buchstabe { Buchstabe } { Ziffer } ist kein platz für sonderzeichen zwischen Buchstaben vorgesehen
+            \item \textbf{abc32} ist ein möglicher bezeichner der dem format Buchstabe { Buchstabe } { Ziffer } folgt
+            \item \textbf{ab3c2} ist kein möglicher bezeichner den im format Buchstabe { Buchstabe } { Ziffer } ist definiert das der bezeichner aus einer n langen buchstaben kette (n>=1) mit darauffolgenden optionalen ziffern bedeutet das es keine abwechslung zwischen buchstabenund ziffern geben darf sonst müsste bspw. so geändert werrden: Buchstabe { Buchstabe | Ziffer }  
+        \end{enumerate} 
     \item 
+        \begin{enumerate}
+            \item \textbf{-(a*b^2)+a[1]} könnte als Ausdruck(Präfixoperator(-), Ausdruck("(" Ausdruck(Ausdruck(bezeichner(a)) InfixOperator(G_InfixOperator(*)) Ausdruck(Ausdruck(bezeichner(b)) InfixOperator(B_InfixOperator(^)) Ausdruck(Wertliteral(G_Wertliteral(2))))) ")") InfixOperator(G_InfixOperator(+)) Ausdruck(feldelement(Bezeichner(a)"["Ausdruck(Wertliteral(G_Wertliteral(1)))"]")) dargestellt werden. jedoch wäre dies ein wenig unsinnig da "^" ein XOR darstellt also eine binäre operation und nicht zum quadrieren benutzt werden könnte
+            \item \textbf{a + 2} kann als Ausdruck(Bezeichner(a)) InfixOperator(G_InfixOperator(+)) Ausdruck(Wertliteral(G_Wertliteral(2)))
+            \item \textbf{true+(a+b)} könnte erzeugt werden Ausdruck(Wertliteral(B_Wertliteral(true))) InfixOperator(G_InfixOperator(+)) Ausdruck("("Ausdruck(Ausdruck(Bezeichner(a)) InfixOperator(G_InfixOperator)(+) Ausdruck(Bezeichner(b)))")")
+            \item \textbf{-(C*b)+4} kann nicht erzeugt werden da der buchstabe C nicht definiert ist nur kleinbuchstaben können erzeugt werden
+        \end{enumerate}
 \end{enumerate}
 
 \section{Aufgabe - Korrektheit}
